@@ -23,9 +23,10 @@ func errCheck(e error) {
 }
 
 // does file exist?
-func fExists(fName string) (bool, error) {
+func fExists(fName string) (exist bool , err error) {
+	exist = false
 	if _, err := os.Stat(fName); err == nil {
-		return true, err
+		exist = true
 	}
-	return false, err
+	return
 }
