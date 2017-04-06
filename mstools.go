@@ -9,21 +9,22 @@ import (
 //Round function to round, with precision 2
 func Round(input float64) float64 {
 	var round float64
-	pow := math.Pow(10, 2)
-	digit := pow * input
+	//pow := math.Pow(10, 2)
+	
+	digit := input * 100
 	round = math.Ceil(digit)
-	return round / pow
+	return round / 100
 }
 
-//errCheck log and die on error
-func errCheck(e error) {
+//ErrCheck log and die on error
+func ErrCheck(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
 }
 
-// does file exist?
-func fExists(fName string) (exist bool , err error) {
+//FExists does file exist?
+func FExists(fName string) (exist bool , err error) {
 	exist = false
 	if _, err := os.Stat(fName); err == nil {
 		exist = true
