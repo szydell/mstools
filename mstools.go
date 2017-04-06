@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-//Round function to round, with precision 2
+//Round float64, precision 2 digits
 func Round(input float64) float64 {
 	return math.Ceil(input * 100) / 100
 }
