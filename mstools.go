@@ -7,12 +7,12 @@ import (
 )
 
 //Round function to round, with precision 2
-func Round(input float64) float32 {
+func Round(input float64) float64 {
 	var round float64
-	pow := math.Pow(10, float64(2))
+	pow := math.Pow(10, 2)
 	digit := pow * input
 	round = math.Ceil(digit)
-	return float32(round / pow)
+	return round / pow
 }
 
 //errCheck log and die on error
