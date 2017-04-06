@@ -9,8 +9,6 @@ import (
 //Round function to round, with precision 2
 func Round(input float64) float64 {
 	var round float64
-	//pow := math.Pow(10, 2)
-	
 	digit := input * 100
 	round = math.Ceil(digit)
 	return round / 100
