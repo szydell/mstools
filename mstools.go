@@ -6,11 +6,19 @@ import (
 	"os"
 )
 
-//Round float64, precision 2 digits
-func Round(input float64) float64 {
-	return math.Ceil(input * 100) / 100
+//Round
+func Round(val float64, places int ) (float64) {
+    var round float64
+    pow := math.Pow(10, float64(places))
+    digit := pow * val
+    _, div := math.Modf(digit)
+    if div >= 0.5 {
+        round = math.Ceil(digit)
+    } else {
+        round = math.Floor(digit)
+    }
+    return round / pow
 }
-
 //ErrCheck log and die on error
 func ErrCheck(e error) {
 	if e != nil {
