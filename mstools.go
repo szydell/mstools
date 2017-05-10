@@ -19,6 +19,7 @@ func Round(val float64, places int ) (float64) {
     }
     return round / pow
 }
+
 //ErrCheck log and die on error
 func ErrCheck(e error) {
 	if e != nil {
