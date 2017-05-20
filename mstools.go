@@ -1,9 +1,10 @@
 package mstools
 
 import (
-	"log"
-	"math"
-	"os"
+    "log"
+    "math"
+    "os"
+    "errors"
 )
 
 //Round
@@ -34,4 +35,21 @@ func FExists(fName string) (exist bool , err error) {
 		exist = true
 	}
 	return
+}
+
+//FileOrDir returns if it is a file (f), or dir (d) or 'u' and an error if does not exist
+func FileOrDir(fName string) (fType byte, err error) {
+    fi, err := os.Stat(fName)
+    if err != nil {
+        return 'u', err
+    }
+    switch mode := fi.Mode(); {
+    case mode.IsDir():
+        fType = 'd'
+    case mode.IsRegular():
+        fType = 'f'
+    default:
+        err = errors.New("unkown type")
+    }
+    return
 }
