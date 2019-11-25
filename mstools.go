@@ -39,9 +39,10 @@ func FExists(fName string) (exist bool , err error) {
 
 //FileOrDir returns if it is a file (f), or dir (d) or 'u' and an error if does not exist
 func FileOrDir(fName string) (fType byte, err error) {
+    fType = 'u'
     fi, err := os.Stat(fName)
     if err != nil {
-        return 'u', err
+        return
     }
     switch mode := fi.Mode(); {
     case mode.IsDir():
